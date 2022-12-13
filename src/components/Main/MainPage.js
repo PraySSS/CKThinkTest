@@ -257,13 +257,29 @@ const MainPage = () => {
           </Grid>
           <Grid item xs={10}>
             <ButtonGroup>
-              <Button onClick={() => showPrevious({ item: list[0] })}>
-                Previous
-              </Button>
+              {
+                //show previous button only when we have items
+                page === 1 ? (
+                  ''
+                ) : (
+                  <Button onClick={() => showPrevious({ item: list[0] })}>
+                    Previous
+                  </Button>
+                )
+              }
 
-              <Button onClick={() => showNext({ item: list[list.length - 1] })}>
-                Next
-              </Button>
+              {
+                //show next button only when we have items
+                list.length < 5 ? (
+                  ''
+                ) : (
+                  <Button
+                    onClick={() => showNext({ item: list[list.length - 1] })}
+                  >
+                    Next
+                  </Button>
+                )
+              }
             </ButtonGroup>
           </Grid>
         </Grid>
